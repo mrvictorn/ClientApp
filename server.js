@@ -5,13 +5,6 @@ var express 		= require('express'),
 
 app.use(bodyParser.json());
 
-/*app.use(function (req, res, next) {
-  console.log(Date.now());
-  console.log(req.body) 
-  next()
-}); 
-*/
-
 //routes
 require('./app/routes/approutes')(app); // configure our routes
 
