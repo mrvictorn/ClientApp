@@ -1,5 +1,5 @@
 {
-  "name": "UsersApp",
+  "name": "ClientApp",
   "main": "server.js",
   "dependencies": {
     "body-parser": "~1.4.2",
