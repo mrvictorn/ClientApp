@@ -5,7 +5,7 @@ getCurrStatistics = function () {
         load:os.loadavg(),
         totalmem:os.totalmem(),
         freemem:os.freemem(),
-        lastTimeStamp: new Date()
+        lastTimeStamp: new Date().getTime()
     };
 };
 
