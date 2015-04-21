@@ -1,8 +1,20 @@
 var os = require('os');
 getCurrStatistics = function () {
+     function load(){
+        var idle=0,
+        cpuCount = os.cpus().length;
+        load = os.loadavg();
+        
+        for (var i = 0,l=load.length; i<l ; i++) {
+            load[i]=load[i]/cpuCount;
+        };
+        console.log(load[0]);
+        return load;
+    }
+
     return {
         uptime:os.uptime(),
-        load:os.loadavg(),
+        load:load(),
         totalmem:os.totalmem(),
         freemem:os.freemem(),
         lastTimeStamp: new Date().getTime()
@@ -22,7 +34,8 @@ getMashineInfo = function () {
         totalmem:os.totalmem(),
         freemem:os.freemem(),
         cpus:os.cpus(),
-        nics:os.networkInterfaces()
+        nics:os.networkInterfaces(),
+        lastTimeStamp: new Date().getTime()
     };
 };
 
@@ -36,6 +49,9 @@ CrudRouteCreator = function(app,apiname) {
         res.json(getCurrStatistics()); 
     });
 };
+
+
+
 /*    .post('/api/'+apiname, function(req, res) { // CREATE   
         model.createFromBody(req.body,function(err) {
             if (err) res.send(err);
